@@ -12,15 +12,11 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Entity(name = "products")
 public class Product {
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column(name = "name")
     private String title;
-
-    @Column(name = "description")
     private String content;
 }
