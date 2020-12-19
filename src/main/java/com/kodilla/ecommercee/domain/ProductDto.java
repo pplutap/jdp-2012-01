@@ -6,9 +6,9 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class ProductDto {
-    private int id;
+    private Long id;
     private String name;
     private String description;
-    private int price;
-    private int groupId;
+    private Long price;
+    private Long groupId;
 }
