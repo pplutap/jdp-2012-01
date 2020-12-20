@@ -1,2 +1,4 @@
-package com.kodilla.ecommercee.service;public class DbService {
+package com.kodilla.ecommercee.service;
+
+public class DbService {
 }

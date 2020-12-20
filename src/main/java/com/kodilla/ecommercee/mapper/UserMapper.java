@@ -1,2 +1,4 @@
-package com.kodilla.ecommercee.mapper;public class UserMapper {
+package com.kodilla.ecommercee.mapper;
+
+public class UserMapper {
 }
