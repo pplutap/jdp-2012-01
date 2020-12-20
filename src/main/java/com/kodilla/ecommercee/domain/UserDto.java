@@ -5,10 +5,11 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class ProductDto {
+public class UserDto {
+
     private Long id;
-    private String name;
-    private String description;
-    private Long price;
-    private Long groupId;
+    private String username;
+    private int status;
+    private int userKey;
+
 }
