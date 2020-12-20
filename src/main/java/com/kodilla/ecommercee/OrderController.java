@@ -2,6 +2,7 @@ package com.kodilla.ecommercee;
 
 import com.kodilla.ecommercee.domain.OrderDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -18,19 +19,19 @@ public class OrderController {
         return new ArrayList<>();
     }
 
-    @PutMapping("addOrder")
-    public void addOrder(OrderDto orderDto) {
+    @RequestMapping(method = RequestMethod.POST, value = "createOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void createOrder(OrderDto orderDto) {
         System.out.println("The order: " + orderDto + " has been added");
     }
 
     @GetMapping("getOrder")
     public OrderDto getOrder(Long orderId) {
-        return new OrderDto(1, "Test");
+        return new OrderDto(1L, "Test");
     }
 
-    @PostMapping("updateOrder")
+    @RequestMapping(method = RequestMethod.PUT, value = "updateOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
     public OrderDto updateOrder(OrderDto orderDto) {
-        return new OrderDto(1, "Test");
+        return new OrderDto(1L, "Test");
     }
 
     @DeleteMapping("deleteOrder")
