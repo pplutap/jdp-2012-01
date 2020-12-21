@@ -2,17 +2,19 @@ package com.kodilla.ecommercee.domain;
 
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 @NoArgsConstructor
 @Entity(name = "order")
 public class Order {
-    private long id;
+    private Long id = null;
     private String name;
     private List<Product> products;
 
     @Id
     @GeneratedValue
+    @NotNull
     @Column(name = "ID",
             unique = true)
     public long getId() {
