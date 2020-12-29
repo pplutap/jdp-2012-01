@@ -7,9 +7,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public class UserDto {
 
-    private Long id;
-    private String username;
-    private int status;
-    private int userKey;
+    private final Long id;
+    private final String username;
+    private final int status;
+    private final int userkey;
 
 }

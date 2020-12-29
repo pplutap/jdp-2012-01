@@ -8,26 +8,23 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Entity(name = "USERS")
+@Entity(name = "users")
 public class User {
 
     @Id
     @GeneratedValue
-    @NotNull
-    @Column(name = "ID", unique = true)
     private Long id;
 
-    @Column(name = "USERNAME")
+    @Column(name = "username")
     private String username;
 
-    @Column(name = "STATUS")
+    @Column(name = "status")
     private int status;
 
-    @Column(name = "USER_KEY")
-    private int userKey;
+    @Column(name = "userkey")
+    private int userkey;
 }
