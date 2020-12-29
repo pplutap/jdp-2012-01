@@ -32,7 +32,7 @@ public class Product {
     @Column(name = "GROUP_ID")
     private Long groupId;
 
-    @ManyToOne
-    @JoinColumn(name = "PRODUCTS_ID")
-    private Products products;
+//    @ManyToOne
+//    @JoinColumn(name = "PRODUCTS_ID")
+//    private Products products;
 }
