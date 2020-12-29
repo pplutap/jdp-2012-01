@@ -41,7 +41,7 @@ public class Group {
     @JoinTable(
             name = "JOIN?GROUP_PRODUCT",
             joinColumns = {@JoinColumn(name = "GROUP_ID", referencedColumnName = "GROUP_ID)")},
-            inverseJoinColumns = {@JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID")})
+            inverseJoinColumns = {@JoinColumn(name = "PRODUCT_ID", referencedColumnName = "ID")})
     public List<Product> getProducts() {
         return products;
     }
