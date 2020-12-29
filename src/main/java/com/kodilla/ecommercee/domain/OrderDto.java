@@ -6,6 +6,6 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class OrderDto {
-    private long id;
+    private Long id;
     private String name;
 }
