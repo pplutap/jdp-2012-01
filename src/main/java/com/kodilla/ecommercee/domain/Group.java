@@ -40,8 +40,9 @@ public class Group {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "JOIN?GROUP_PRODUCT",
-            joinColumns = {@JoinColumn(name = "GROUP_ID", referencedColumnName = "GROUP_ID)")},
-            inverseJoinColumns = {@JoinColumn(name = "PRODUCT_ID", referencedColumnName = "ID")})
+            joinColumns = {@JoinColumn(name = "GROUP_ID", referencedColumnName = "GROUP_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID")}
+    )
     public List<Product> getProducts() {
         return products;
     }

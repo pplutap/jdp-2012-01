@@ -18,7 +18,7 @@ public class Order {
     @NotNull
     @Column(name = "ID",
             unique = true)
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -37,7 +37,7 @@ public class Order {
 
     @OneToMany(
             targetEntity = Product.class,
-            mappedBy = "product",
+            mappedBy = "order",
             cascade = {CascadeType.ALL},
             fetch = FetchType.LAZY)
     public List<Product> getProducts() {
