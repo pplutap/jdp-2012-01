@@ -15,7 +15,7 @@ public class UserMapper {
                 userDto.getId(),
                 userDto.getUsername(),
                 userDto.getStatus(),
-                userDto.getUserkey()
+                userDto.getUserKey()
         );
     }
 
@@ -24,7 +24,7 @@ public class UserMapper {
                 user.getId(),
                 user.getUsername(),
                 user.getStatus(),
-                user.getUserkey()
+                user.getUserKey()
         );
     }
 
