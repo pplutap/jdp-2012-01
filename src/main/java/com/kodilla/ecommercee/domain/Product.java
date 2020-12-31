@@ -17,7 +17,7 @@ public class Product {
     private String description;
     private Long price;
     private Order order;
-    //private Long groupId;
+    private Long groupId;
     private List<Group> groups = new ArrayList<>();
 
     @Id
@@ -69,14 +69,14 @@ public class Product {
         this.order = order;
     }
 
-    /*@Column(name = "GROUP_ID")
+    @Column(name = "GROUP_ID")
     public Long getGroupId() {
         return groupId;
     }
 
     public void setGroupId(Long groupId) {
         this.groupId = groupId;
-    }*/
+    }
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
     public List<Group> getGroups() {
