@@ -1,11 +1,13 @@
 package com.kodilla.ecommercee;
 
+import com.kodilla.ecommercee.domain.Product;
 import com.kodilla.ecommercee.domain.ProductDto;
+import com.kodilla.ecommercee.mapper.ProductMapper;
+import com.kodilla.ecommercee.service.DbService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -13,28 +15,37 @@ import java.util.List;
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
 public class ProductController {
+    private final DbService service;
+    private final ProductMapper productMapper;
+
     @RequestMapping(method = RequestMethod.GET, value = "getProducts")
     public List<ProductDto> getProducts() {
-        return new ArrayList<>();
+        List<Product> products = service.getAllProducts();
+        return productMapper.mapToProductDtoList(products);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "getProduct")
-    public ProductDto getProduct(Long productId) {
-        return new ProductDto(1L, "kurtka zimowa", "Pellentesque tempus interdum quam ut rhoncus. Donec ullamcorper turpis dolor. Donec euismod pretium eros et eleifend. Aliquam vulputate faucibus lorem non auctor. Vivamus erat turpis, molestie a nisl non, scelerisque luctus enim. Nunc mi mi, laoreet ac mollis nec, pharetra sit amet tortor. Vivamus a bibendum purus.", 100L, 1L);
+    public ProductDto getProduct(Long productId) throws ProductNotFoundException {
+        return productMapper.mapToProductDto(
+                service.getProduct(productId).orElseThrow(ProductNotFoundException::new)
+        );
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteProduct")
     public void deleteProduct(Long productId) {
-
+        service.deleteProduct(productId);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "updateProduct", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ProductDto updateProduct(ProductDto productDto) {
-        return new ProductDto(1L, "kurtka zimowa", "Pellentesque tempus interdum quam ut rhoncus. Donec ullamcorper turpis dolor. Donec euismod pretium eros et eleifend. Aliquam vulputate faucibus lorem non auctor. Vivamus erat turpis, molestie a nisl non, scelerisque luctus enim. Nunc mi mi, laoreet ac mollis nec, pharetra sit amet tortor. Vivamus a bibendum purus.", 100L, 1L);
+        Product product = productMapper.mapToProduct(productDto);
+        Product savedProduct = service.saveProduct(product);
+        return productMapper.mapToProductDto(savedProduct);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "createProduct", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void createProduct(ProductDto productDto) {
-
+        Product product = productMapper.mapToProduct(productDto);
+        service.saveProduct(product);
     }
 }
