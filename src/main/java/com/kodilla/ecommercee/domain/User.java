@@ -22,6 +22,12 @@ public class User {
     @Column(name = "ID", unique = true)
     private Long id;
 
+    public User(String username, int status, int userKey) {
+        this.username = username;
+        this.status = status;
+        this.userKey = userKey;
+    }
+
     @Column(name = "USERNAME")
     private String username;
 
