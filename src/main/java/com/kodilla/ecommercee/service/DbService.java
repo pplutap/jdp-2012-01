@@ -44,6 +44,6 @@ public class DbService {
     }
 
     public void deleteProduct(final Long userId) {
-            productRepository.deleteById(userId);
+        productRepository.deleteById(userId);
     }
 }
