@@ -13,12 +13,4 @@ public class CartDto {
     private String description;
     private BigDecimal price;
     private String groupId;
-
-    public void add(ProductDto productDto) {
-
-    }
-
-    public void delete(ProductDto productDto) {
-
-    }
 }
