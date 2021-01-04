@@ -1,68 +1,36 @@
 package com.kodilla.ecommercee.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
 
 @NoArgsConstructor
-@Entity(name = "CART")
+@AllArgsConstructor
+@Getter
+@Setter
+@Entity
+@Table(name = "CART")
 public class Cart {
-    private Long id;
-    private String name;
-    private String description;
-    private BigDecimal price;
-    private String groupId;
 
     @Id
     @GeneratedValue
     @NotNull
     @Column(name = "CART_ID", unique = true)
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private Long id;
 
     @Column(name = "NAME")
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    private String name;
 
     @Column(name = "DESCRIPTION")
-    public String getDescription() {
-        return this.description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    private String description;
 
     @Column(name = "PRICE")
-    public BigDecimal getPrice() {
-        return this.price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
+    private Long price;
 
     @Column(name = "GROUP_ID")
-    public String getGroupId() {
-        return this.groupId;
-    }
-
-    public void setGroupId(String groupId) {
-        this.groupId = groupId;
-    }
+    private String groupId;
 }
