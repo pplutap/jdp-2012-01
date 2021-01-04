@@ -3,10 +3,11 @@ package com.kodilla.ecommercee.domain;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 
 @NoArgsConstructor
-@Entity(name = "ORDER")
+@Entity(name = "order")
 public class Order {
     private Long id = null;
     private String name;
@@ -15,9 +16,9 @@ public class Order {
     @Id
     @GeneratedValue
     @NotNull
-    @Column(name = "ORDER_ID",
+    @Column(name = "ID",
             unique = true)
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -25,7 +26,7 @@ public class Order {
         this.id = id;
     }
 
-    @Column(name = "ORDER_NAME")
+    @Column(name = "NAME")
     public String getName() {
         return name;
     }
@@ -36,7 +37,7 @@ public class Order {
 
     @OneToMany(
             targetEntity = Product.class,
-            mappedBy = "PRODUCT_ID",
+            mappedBy = "order",
             cascade = {CascadeType.ALL},
             fetch = FetchType.LAZY)
     public List<Product> getProducts() {
