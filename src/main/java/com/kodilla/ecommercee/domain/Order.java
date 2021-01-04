@@ -1,50 +1,37 @@
 package com.kodilla.ecommercee.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
-
+@AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "order")
+@Getter
+@Setter
+@Entity
+@Table(name = "ORDER")
 public class Order {
-    private Long id = null;
-    private String name;
-    private List<Product> products;
 
     @Id
     @GeneratedValue
     @NotNull
     @Column(name = "ID",
             unique = true)
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    private Long id;
 
     @Column(name = "NAME")
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    private String name;
 
     @OneToMany(
             targetEntity = Product.class,
             mappedBy = "order",
             cascade = {CascadeType.ALL},
             fetch = FetchType.LAZY)
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
-    }
+    private List<Product> products = new ArrayList<>();
 }
