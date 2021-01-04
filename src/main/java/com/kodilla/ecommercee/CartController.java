@@ -32,11 +32,11 @@ public class CartController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "addToCart", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void addToCart(CartDto cartDto, ProductDto productDto) {
-        cartDto.add(productDto);
+        return;
     }
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteFromCart")
     public void deleteFromCart(CartDto cartDto, ProductDto productDto) {
-        cartDto.delete(productDto);
+
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "createOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
