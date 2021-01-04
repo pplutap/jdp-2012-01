@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
 
@@ -31,11 +32,11 @@ public class CartController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "addToCart", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void addToCart(CartDto cartDto, ProductDto productDto) {
-        cartDto.add(productDto);
+        return;
     }
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteFromCart")
     public void deleteFromCart(CartDto cartDto, ProductDto productDto) {
-        cartDto.delete(productDto);
+
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "createOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
