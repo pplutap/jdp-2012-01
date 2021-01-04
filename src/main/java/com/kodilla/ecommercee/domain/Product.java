@@ -16,6 +16,7 @@ import java.util.List;
 @Setter
 @Entity(name = "PRODUCTS")
 public class Product {
+
     @Id
     @GeneratedValue
     @NotNull

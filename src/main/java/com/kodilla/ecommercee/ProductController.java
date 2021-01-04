@@ -1,12 +1,16 @@
 package com.kodilla.ecommercee;
 
 import com.kodilla.ecommercee.domain.Product;
+import com.kodilla.ecommercee.domain.Order;
 import com.kodilla.ecommercee.domain.ProductDto;
 import com.kodilla.ecommercee.mapper.ProductMapper;
 import com.kodilla.ecommercee.service.DbService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -29,6 +33,7 @@ public class ProductController {
         return productMapper.mapToProductDto(
                 service.getProduct(productId).orElseThrow(ProductNotFoundException::new)
         );
+
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteProduct")

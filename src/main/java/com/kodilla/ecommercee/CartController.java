@@ -22,7 +22,7 @@ public class CartController {
 
     @RequestMapping(method = RequestMethod.POST, value = "createCart", consumes = MediaType.APPLICATION_JSON_VALUE)
     public CartDto createCart(CartDto cartDto) {
-        return new CartDto(1L, "kurtka zimowa", "Pellentesque tempus interdum quam ut rhoncus. Donec ullamcorper turpis dolor. Donec euismod pretium eros et eleifend. Aliquam vulputate faucibus lorem non auctor. Vivamus erat turpis, molestie a nisl non, scelerisque luctus enim. Nunc mi mi, laoreet ac mollis nec, pharetra sit amet tortor. Vivamus a bibendum purusa.", new BigDecimal("100"), "1" );
+        return new CartDto(1L, "kurtka zimowa", "Pellentesque tempus interdum quam ut rhoncus. Donec ullamcorper turpis dolor. Donec euismod pretium eros et eleifend. Aliquam vulputate faucibus lorem non auctor. Vivamus erat turpis, molestie a nisl non, scelerisque luctus enim. Nunc mi mi, laoreet ac mollis nec, pharetra sit amet tortor. Vivamus a bibendum purusa.", 100L, "1" );
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "getEmptyCart")
@@ -41,6 +41,6 @@ public class CartController {
 
     @RequestMapping(method = RequestMethod.POST, value = "createOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
     public OrderDto createOrder(CartDto cartDto) {
-        return new OrderDto(1L, "test New Order");
+        return new OrderDto(1L, "test New Order", null);
     }
 }

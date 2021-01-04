@@ -11,6 +11,6 @@ public class CartDto {
     private Long id;
     private String name;
     private String description;
-    private BigDecimal price;
+    private Long price;
     private String groupId;
 }
