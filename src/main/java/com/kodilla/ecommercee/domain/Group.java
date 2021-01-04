@@ -1,9 +1,6 @@
 package com.kodilla.ecommercee.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -12,22 +9,33 @@ import java.util.List;
 
 
 @NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-@Entity
-@Table(name = "GROUP")
+@Entity(name = "GROUP")
 public class Group {
+    private Long id = null;
+    private String name;
+    private List<Product> products = new ArrayList<>();
 
     @Id
     @GeneratedValue
     @NotNull
     @Column(name = "GROUP_ID",
             unique = true)
-    private Long id;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     @Column(name = "GROUP_NAME")
-    private String name;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
@@ -35,5 +43,11 @@ public class Group {
             joinColumns = {@JoinColumn(name = "GROUP_ID", referencedColumnName = "GROUP_ID")},
             inverseJoinColumns = {@JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID")}
     )
-    private List<Product> products = new ArrayList<>();
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
 }
