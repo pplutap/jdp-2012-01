@@ -1,11 +1,13 @@
 package com.kodilla.ecommercee.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
 
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "order")
 public class Order {
