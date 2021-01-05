@@ -24,10 +24,9 @@ public class UserRepositoryTestSuite {
         //Then
         Long id = user.getId();
         Optional<User> readUser = userRepository.findById(id);
-        System.out.println("Takie tam: " + readUser.get().getUsername() + ", " + readUser.get().getId());
         Assertions.assertTrue(readUser.isPresent());
 
         //CleanUp
-        //userRepository.deleteById(id);
+        userRepository.deleteById(id);
     }
 }
