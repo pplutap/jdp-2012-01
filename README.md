@@ -28,16 +28,8 @@ Write MySQL credentials into application.properties.
   * /v1/product/getProducts - GET method, no parameters
   * /v1/product/getProduct - GET method, give me productId
   * /v1/product/deleteProduct - DELETE method, give me productId
-  * /v1/product/updateProduct - PUT method (JSON), give me full object as described below
-  * /v1/product/createProduct - POST method (JSON), give me full object as described below
-Example of full object in JSON:
-    {
-        "id": 1,
-        "name": "coat",
-        "description": "winter coat in brown colour",
-        "price": 100,
-        "groupId": "1"
-    }
+  * /v1/product/updateProduct - PUT method (JSON), e.g.: { "id": 1, "name": "coat", "description": "winter coat in brown colour", "price": 100, "groupId": "1" }
+  * /v1/product/createProduct - POST method (JSON), e.g.: { "id": 1, "name": "coat", "description": "winter coat in brown colour", "price": 100, "groupId": "1" }
 
 ## How can I use it?
 It's a result of our teamwork during Kodilla's course. You can use it on Creative Commons license. 
