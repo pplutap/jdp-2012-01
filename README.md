@@ -39,8 +39,6 @@ Example of full object in JSON:
         "groupId": "1"
     }
 
-jakie dane należy przekazać do endpointu, które informacje są opcjonalne, jakie wartości są zwracane.
-
 ## Wykorzystanie
 It's a result of our teamwork during Kodilla's course. You can use it on Creative Commons license. 
 
