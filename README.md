@@ -18,7 +18,7 @@ You need:
 * MySQL database
 * free port 8080
 
-## Uruchomienie projektu
+## Running the project
 Projects builds using Gradle (gradlew build). You need working MySQL server: create user and database.
 Write MySQL credentials into application.properties.
 
@@ -39,7 +39,7 @@ Example of full object in JSON:
         "groupId": "1"
     }
 
-## Wykorzystanie
+## How can I use it?
 It's a result of our teamwork during Kodilla's course. You can use it on Creative Commons license. 
 
 ## Troubleshooting
