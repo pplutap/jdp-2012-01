@@ -7,8 +7,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,29 +14,75 @@ import java.util.List;
 @Setter
 @Entity(name = "PRODUCTS")
 public class Product {
+    private Long id;
+    private String name;
+    private String description;
+    private Long groupId;
+    private Long price;
+    private Order order;
+
+    public Product(String name, String description, Long price) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
 
     @Id
     @GeneratedValue
     @NotNull
     @Column(name = "PRODUCT_ID", unique = true)
-    private Long id;
+    public Long getId() {
+        return id;
+    }
 
     @Column(name = "NAME")
-    private String name;
+    public String getName() {
+        return name;
+    }
 
     @Column(name = "DESCRIPTION")
-    private String description;
+    public String getDescription() {
+        return description;
+    }
 
     @Column(name = "PRICE")
-    private Long price;
+    public Long getPrice() {
+        return price;
+    }
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "ORDER_ID")
-    private Order order;
+    public Order getOrder() {
+        return order;
+    }
 
     @Column(name = "GROUP_ID")
-    private Long groupId;
+    public Long getGroupId() {
+        return groupId;
+    }
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
-    private List<Group> groups = new ArrayList<>();
+    private void setId(Long id) {
+        this.id = id;
+    }
+
+    private void setName(String name) {
+        this.name = name;
+    }
+
+    private void setDescription(String description) {
+        this.description = description;
+    }
+
+    private void setPrice(Long price) {
+        this.price = price;
+    }
+
+    private void setOrder(Order order) {
+        this.order = order;
+    }
+
+    private void setGroupId(Long groupId) {
+        this.groupId = groupId;
+    }
+
 }

@@ -15,10 +15,9 @@ public class ProductMapper {
                 productDto.getId(),
                 productDto.getName(),
                 productDto.getDescription(),
-                productDto.getPrice(),
-                productDto.getOrder(),
                 productDto.getGroupId(),
-                productDto.getGroups()
+                productDto.getPrice(),
+                productDto.getOrder()
         );
     }
 
@@ -27,10 +26,9 @@ public class ProductMapper {
                 product.getId(),
                 product.getName(),
                 product.getDescription(),
-                product.getPrice(),
-                product.getOrder(),
                 product.getGroupId(),
-                product.getGroups()
+                product.getPrice(),
+                product.getOrder()
         );
     }
 
