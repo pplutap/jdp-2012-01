@@ -1,17 +1,12 @@
 package com.kodilla.ecommercee;
 
 import com.kodilla.ecommercee.domain.CartDto;
-import com.kodilla.ecommercee.domain.OrderDto;
-import com.kodilla.ecommercee.domain.ProductDto;
+import com.kodilla.ecommercee.mapper.CartMapper;
+import com.kodilla.ecommercee.service.DbService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
-import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -20,27 +15,31 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class CartController {
 
+    private DbService dbService;
+    private CartMapper cartMapper;
+
     @RequestMapping(method = RequestMethod.POST, value = "createCart", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public CartDto createCart(CartDto cartDto) {
-        return new CartDto(1L, "kurtka zimowa", "Pellentesque tempus interdum quam ut rhoncus. Donec ullamcorper turpis dolor. Donec euismod pretium eros et eleifend. Aliquam vulputate faucibus lorem non auctor. Vivamus erat turpis, molestie a nisl non, scelerisque luctus enim. Nunc mi mi, laoreet ac mollis nec, pharetra sit amet tortor. Vivamus a bibendum purusa.", 100L, "1" );
+    public void createCart(@RequestBody CartDto cartDto) {
+        dbService.saveCart(cartMapper.mapToCart(cartDto));
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "getEmptyCart")
-    public List getEmptyCart() {
-        return Collections.emptyList();
+    @RequestMapping(method = RequestMethod.GET, value = "getCarts")
+    public List<CartDto> getCarts() {
+        return cartMapper.mapToCartDtoList(dbService.getAllCarts());
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "addToCart", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void addToCart(CartDto cartDto, ProductDto productDto) {
-        return;
-    }
-    @RequestMapping(method = RequestMethod.DELETE, value = "deleteFromCart")
-    public void deleteFromCart(CartDto cartDto, ProductDto productDto) {
-
+    @RequestMapping(method = RequestMethod.GET, value = "getCart")
+    public CartDto getCart(@RequestParam Long id) {
+        return cartMapper.mapToCartDto(dbService.getCart(id));
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "createOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public OrderDto createOrder(CartDto cartDto) {
-        return new OrderDto(1L, "test New Order", null);
+    @RequestMapping(method = RequestMethod.PUT, value = "updateCart")
+    public CartDto updateCart(@RequestBody CartDto cartDto) {
+        return cartMapper.mapToCartDto(dbService.saveCart(cartMapper.mapToCart(cartDto)));
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "deleteCart")
+    public void deleteCart(@RequestParam Long id) {
+        dbService.deleteCart(id);
     }
 }
