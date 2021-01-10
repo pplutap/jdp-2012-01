@@ -1,7 +1,6 @@
 package com.kodilla.ecommercee;
 
 import com.kodilla.ecommercee.domain.Product;
-import com.kodilla.ecommercee.domain.Order;
 import com.kodilla.ecommercee.domain.ProductDto;
 import com.kodilla.ecommercee.mapper.ProductMapper;
 import com.kodilla.ecommercee.service.DbService;

@@ -3,14 +3,12 @@ package com.kodilla.ecommercee.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @AllArgsConstructor
 public class CartDto {
     private Long id;
-    private String name;
-    private String description;
-    private Long price;
-    private String groupId;
+    private UserDto userDto;
+    private List<ProductDto> productsInCart;
 }

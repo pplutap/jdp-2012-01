@@ -9,7 +9,9 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "order")
+@Entity
+@Table(name = "ORDERS")
+
 public class Order {
     private Long id = null;
     private String name;
