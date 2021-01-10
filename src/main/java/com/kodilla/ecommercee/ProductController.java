@@ -32,7 +32,6 @@ public class ProductController {
         return productMapper.mapToProductDto(
                 service.getProduct(productId).orElseThrow(ProductNotFoundException::new)
         );
-
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteProduct")
