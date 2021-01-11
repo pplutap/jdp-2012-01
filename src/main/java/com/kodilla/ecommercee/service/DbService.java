@@ -1,10 +1,13 @@
 package com.kodilla.ecommercee.service;
 
+
 import com.kodilla.ecommercee.domain.Group;
 import com.kodilla.ecommercee.domain.Order;
 import com.kodilla.ecommercee.domain.Product;
 import com.kodilla.ecommercee.domain.User;
 import com.kodilla.ecommercee.repository.GroupRepository;
+import com.kodilla.ecommercee.domain.Cart;
+import com.kodilla.ecommercee.repository.CartRepository;
 import com.kodilla.ecommercee.repository.OrderRepository;
 import com.kodilla.ecommercee.repository.ProductRepository;
 import com.kodilla.ecommercee.repository.UserRepository;
@@ -22,6 +25,7 @@ public class DbService {
     private final ProductRepository productRepository;
     private final OrderRepository orderRepository;
     private final GroupRepository groupRepository;
+    private final CartRepository cartRepository;
 
 
     public List<User> getAllUsers() {
@@ -72,7 +76,6 @@ public class DbService {
         orderRepository.deleteById(orderId);
     }
 
-
     public List<Group> getAllGroups() {
         return groupRepository.findAll();
     }
@@ -87,5 +90,20 @@ public class DbService {
 
     public void deleteGroup(final Long id) {
         groupRepository.deleteById(id);
+
+    public List<Cart> getAllCarts() {
+        return cartRepository.findAll();
+    }
+
+    public Cart getCart(final Long id) {
+        return cartRepository.findById(id).orElse(null);
+    }
+
+    public Cart saveCart(final Cart cart) {
+        return cartRepository.save(cart);
+    }
+
+    public void deleteCart(final Long id) {
+        cartRepository.deleteById(id);
     }
 }

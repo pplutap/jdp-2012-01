@@ -17,6 +17,17 @@ import java.util.List;
 @Entity(name = "PRODUCTS")
 public class Product {
 
+
+    public Product(@NotNull Long id, String name, String description, Long price, Order order, Long groupId, List<Group> groups) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.order = order;
+        this.groupId = groupId;
+        this.groups = groups;
+    }
+
     @Id
     @GeneratedValue
     @NotNull
@@ -41,4 +52,8 @@ public class Product {
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
     private List<Group> groups = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "CART_ID")
+    private Cart cart;
 }

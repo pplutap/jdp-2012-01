@@ -10,9 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
-@Data
 @NoArgsConstructor
-@Entity(name = "GROUP")
+@Getter
+@Setter
+@Entity
+@Table(name = "GROUPS")
 public class Group {
     private Long id = null;
     private String name;
