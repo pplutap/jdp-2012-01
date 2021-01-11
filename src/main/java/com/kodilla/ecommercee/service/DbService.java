@@ -1,13 +1,11 @@
 package com.kodilla.ecommercee.service;
 
 import com.kodilla.ecommercee.domain.*;
-import com.kodilla.ecommercee.repository.OrderRepository;
-import com.kodilla.ecommercee.repository.UserRepository;
+import com.kodilla.ecommercee.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.kodilla.ecommercee.domain.User;
 import com.kodilla.ecommercee.repository.UserRepository;
-import com.kodilla.ecommercee.repository.ProductRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -87,8 +85,6 @@ public class DbService {
     public void deleteGroup(final Long id) {
         groupRepository.deleteById(id);
     }
-
-    public void deleteOrder(final Long orderId) { orderRepository.deleteById(orderId); }
 
     public List<Cart> getAllCarts() {
         return cartRepository.findAll();
