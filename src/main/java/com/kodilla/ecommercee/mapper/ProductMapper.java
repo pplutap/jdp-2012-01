@@ -17,7 +17,6 @@ public class ProductMapper {
                 productDto.getDescription(),
                 productDto.getPrice(),
                 productDto.getOrder(),
-                productDto.getGroupId(),
                 productDto.getGroups()
         );
     }
@@ -29,7 +28,6 @@ public class ProductMapper {
                 product.getDescription(),
                 product.getPrice(),
                 product.getOrder(),
-                product.getGroupId(),
                 product.getGroups()
         );
     }
@@ -37,6 +35,12 @@ public class ProductMapper {
     public List<ProductDto> mapToProductDtoList(final List<Product> productList) {
         return productList.stream()
                 .map(this::mapToProductDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<Product> mapToProductList(final List<ProductDto> productList) {
+        return productList.stream()
+                .map(this::mapToProduct)
                 .collect(Collectors.toList());
     }
 }

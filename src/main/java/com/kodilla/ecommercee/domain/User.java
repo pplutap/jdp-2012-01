@@ -16,6 +16,13 @@ import javax.validation.constraints.NotNull;
 @Table(name = "USERS")
 public class User {
 
+    public User(Long id, String username, int status, int userKey) {
+        this.id = id;
+        this.username = username;
+        this.status = status;
+        this.userKey = userKey;
+    }
+
     @Id
     @GeneratedValue
     @NotNull
@@ -36,4 +43,8 @@ public class User {
 
     @Column(name = "USER_KEY")
     private int userKey;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "CART_ID")
+    public Cart cart;
 }
