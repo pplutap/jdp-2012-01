@@ -13,6 +13,5 @@ public class ProductDto {
     private String description;
     private Long price;
     private Order order;
-    private Long groupId;
     private List<Group> groups;
 }

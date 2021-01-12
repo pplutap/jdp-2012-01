@@ -18,13 +18,12 @@ import java.util.List;
 public class Product {
 
 
-    public Product(@NotNull Long id, String name, String description, Long price, Order order, Long groupId, List<Group> groups) {
+    public Product(@NotNull Long id, String name, String description, Long price, Order order, List<Group> groups) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.order = order;
-        this.groupId = groupId;
         this.groups = groups;
     }
 
@@ -46,9 +45,6 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "ORDER_ID")
     private Order order;
-
-    @Column(name = "GROUP_ID")
-    private Long groupId;
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
     private List<Group> groups = new ArrayList<>();
