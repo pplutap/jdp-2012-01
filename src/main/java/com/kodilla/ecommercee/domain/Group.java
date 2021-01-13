@@ -12,11 +12,20 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "GROUP")
+@Table(name = "`GROUPS`")
 public class Group {
     private Long id = null;
     private String name;
     private List<Product> products = new ArrayList<>();
+
+    public Group(String name) {
+        this.name = name;
+    }
+
+    public Group(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     @Id
     @GeneratedValue

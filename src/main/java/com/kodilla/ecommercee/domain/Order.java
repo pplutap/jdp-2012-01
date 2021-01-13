@@ -17,6 +17,10 @@ public class Order {
     private String name;
     private List<Product> products;
 
+    public Order(String name) {
+        this.name = name;
+    }
+
     @Id
     @GeneratedValue
     @NotNull
