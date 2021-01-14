@@ -51,7 +51,7 @@ public class Product {
     @JoinColumn(name = "ORDER_ID")
     private Order order;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
+    @ManyToMany(mappedBy = "products")
     private List<Group> groups = new ArrayList<>();
 
     @ManyToOne
