@@ -27,6 +27,12 @@ public class Product {
         this.groups = groups;
     }
 
+    public Product(String name, String description, Long price) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+    }
+
     @Id
     @GeneratedValue
     @NotNull
@@ -46,7 +52,7 @@ public class Product {
     @JoinColumn(name = "ORDER_ID")
     private Order order;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
+    @ManyToMany(mappedBy = "products")
     private List<Group> groups = new ArrayList<>();
 
     @ManyToOne
