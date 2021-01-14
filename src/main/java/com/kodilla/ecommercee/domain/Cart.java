@@ -24,7 +24,6 @@ public class Cart {
     @Column(name = "CART_ID", unique = true)
     private Long id;
 
-    @NotNull
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID")
     public User user;
