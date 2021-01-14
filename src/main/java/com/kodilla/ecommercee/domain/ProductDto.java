@@ -14,4 +14,5 @@ public class ProductDto {
     private Long price;
     private Order order;
     private List<Group> groups;
+    private List<Cart> carts;
 }

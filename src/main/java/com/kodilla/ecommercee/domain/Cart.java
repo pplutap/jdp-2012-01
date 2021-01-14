@@ -29,10 +29,11 @@ public class Cart {
     @JoinColumn(name = "USER_ID")
     public User user;
 
-    @OneToMany(
-            targetEntity = Product.class,
-            mappedBy = "cart",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "JOIN_CART_PRODUCT",
+            joinColumns = {@JoinColumn(name = "CART_ID", referencedColumnName = "CART_ID")},
+            inverseJoinColumns = {@JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID")}
+    )
     public List<Product> productsInCart = new ArrayList<>();
 }
