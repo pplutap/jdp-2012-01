@@ -1,9 +1,11 @@
 package com.kodilla.ecommercee;
 
+import com.kodilla.ecommercee.domain.Cart;
 import com.kodilla.ecommercee.domain.CartDto;
 import com.kodilla.ecommercee.mapper.CartMapper;
 import com.kodilla.ecommercee.service.DbService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +17,9 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class CartController {
 
+    @Autowired
     private DbService dbService;
+    @Autowired
     private CartMapper cartMapper;
 
     @RequestMapping(method = RequestMethod.POST, value = "createCart", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -25,7 +29,8 @@ public class CartController {
 
     @RequestMapping(method = RequestMethod.GET, value = "getCarts")
     public List<CartDto> getCarts() {
-        return cartMapper.mapToCartDtoList(dbService.getAllCarts());
+        List<Cart> carts = dbService.getAllCarts();
+        return cartMapper.mapToCartDtoList(carts);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "getCart")
