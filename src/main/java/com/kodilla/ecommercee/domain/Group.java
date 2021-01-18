@@ -1,39 +1,64 @@
 package com.kodilla.ecommercee.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "GROUP")
+@Table(name = "`GROUPS`")
 public class Group {
+    private Long id = null;
+    private String name;
+    private List<Product> products = new ArrayList<>();
+
+    public Group(String name) {
+        this.name = name;
+    }
+
+    public Group(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     @Id
     @GeneratedValue
     @NotNull
     @Column(name = "GROUP_ID",
             unique = true)
-    private Long id;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     @Column(name = "GROUP_NAME")
-    private String name;
+    public String getName() {
+        return name;
+    }
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @ManyToMany
     @JoinTable(
-            name = "JOIN?GROUP_PRODUCT",
-            joinColumns = {@JoinColumn(name = "GROUP_ID", referencedColumnName = "GROUP_ID")},
-            inverseJoinColumns = {@JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID")}
-    )
-    private List<Product> products = new ArrayList<>();
+            name = "GROUP_PRODUCT",
+            joinColumns = @JoinColumn(name = "GROUP_ID"),
+            inverseJoinColumns = @JoinColumn(name = "PRODUCT_ID"))
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
 }
