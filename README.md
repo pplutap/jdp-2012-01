@@ -35,4 +35,4 @@ Write MySQL credentials into application.properties.
 It's a result of our teamwork during Kodilla's course. You can use it on Creative Commons license. 
 
 ## Troubleshooting
-We do not know any.
+We do not know any. 
